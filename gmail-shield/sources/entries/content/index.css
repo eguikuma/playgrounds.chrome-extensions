@@ -1,0 +1,343 @@
+:root {
+  --font-main:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Hiragino Sans', 'Noto Sans JP',
+    sans-serif;
+}
+
+.gmail-shield-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 999999 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  flex-direction: column !important;
+  backdrop-filter: blur(5px) !important;
+  transition:
+    visibility 0s linear,
+    opacity 0.3s ease-in-out,
+    background 0.3s ease-in-out !important;
+}
+
+.gmail-shield-overlay.light-mode {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.97),
+    rgba(240, 248, 255, 0.97)
+  ) !important;
+  transition: background 0.3s ease-in-out !important;
+}
+
+.gmail-shield-overlay.dark-mode {
+  background: linear-gradient(135deg, rgba(33, 33, 33, 0.97), rgba(18, 18, 18, 0.97)) !important;
+  transition: background 0.3s ease-in-out !important;
+}
+
+.gmail-shield-overlay-active {
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  transition-delay: 0s !important;
+}
+
+.gmail-shield-overlay-inactive {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition-delay: 0.3s, 0s, 0s !important;
+}
+
+.gmail-shield-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-between;
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s ease;
+  width: 360px;
+  height: auto;
+  font-family: var(--font-main);
+  animation: fade-in 0.3s ease;
+  transform-origin: center center;
+  transition:
+    opacity 0.3s ease-in-out,
+    transform 0.3s ease-in-out,
+    background-color 0.3s ease-in-out !important;
+}
+
+.gmail-shield-container * {
+  transition:
+    opacity 0.3s ease-in-out,
+    background-color 0.3s ease-in-out,
+    border-color 0.3s ease-in-out !important;
+}
+
+.gmail-shield-primary-message,
+.gmail-shield-secondary-message {
+  transition: color 0.3s ease-in-out;
+}
+
+.gmail-shield-overlay-active .gmail-shield-container {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.gmail-shield-overlay-inactive .gmail-shield-container {
+  transform: translateY(20px) scale(0.95);
+  opacity: 0;
+}
+
+.gmail-shield-container > * {
+  flex-shrink: 0;
+}
+
+.gmail-shield-container.height-auto {
+  justify-content: start !important;
+  height: auto !important;
+}
+
+.light-mode .gmail-shield-container {
+  background: rgba(255, 255, 255, 0.9);
+  transition: background-color 0.3s ease-in-out !important;
+}
+
+.dark-mode .gmail-shield-container {
+  background: rgba(48, 48, 48, 0.9);
+  transition: background-color 0.3s ease-in-out !important;
+}
+
+.gmail-shield-title-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 24px;
+}
+
+.gmail-shield-symbol {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gmail-shield-message-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.gmail-shield-primary-message {
+  font-size: 24px;
+  font-weight: 600;
+  transition: color 0.3s ease;
+  flex-basis: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.light-mode .gmail-shield-primary-message {
+  color: #202124;
+}
+
+.dark-mode .gmail-shield-primary-message {
+  color: #ffffff;
+}
+
+.gmail-shield-secondary-message {
+  font-size: 14px;
+  transition: color 0.3s ease;
+  font-weight: 400;
+  opacity: 0.9;
+  flex-basis: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.light-mode .gmail-shield-secondary-message {
+  color: #5f6368;
+}
+
+.dark-mode .gmail-shield-secondary-message {
+  color: #aaaaaa;
+}
+
+.gmail-shield-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 0;
+  gap: 12px;
+}
+
+.gmail-shield-input-wrapper {
+  position: relative;
+  width: 100%;
+  flex-basis: 48px;
+}
+
+.gmail-shield-input {
+  width: 100%;
+  padding: 12px 40px 12px 12px;
+  box-sizing: border-box;
+  margin: 0;
+  border-radius: 8px;
+  border: 2px solid #4285f4;
+  font-size: 16px;
+  font-family: var(--font-main);
+  height: 100%;
+}
+
+.gmail-shield-symbol-button {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  color: #5f6368;
+  display: flex;
+  align-items: center;
+}
+
+.gmail-shield-symbol-button:hover {
+  color: #1a73e8;
+}
+
+.dark-mode .gmail-shield-symbol-button {
+  color: #aaaaaa;
+}
+
+.dark-mode .gmail-shield-symbol-button:hover {
+  color: #ffffff;
+}
+
+.gmail-shield-input[type='text'] + .gmail-shield-symbol-button {
+  opacity: 0.9;
+}
+
+.dark-mode .gmail-shield-input {
+  background: rgba(48, 48, 48, 0.9);
+  color: #ffffff;
+  border-color: #5f6368;
+}
+
+.gmail-shield-button {
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: #4285f4;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin: 0;
+  flex-basis: 48px;
+}
+
+.gmail-shield-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.gmail-shield-button:not(:disabled):hover {
+  background-color: #1a73e8;
+  transform: translateY(-1px);
+}
+
+.gmail-shield-button:not(:disabled):active {
+  transform: translateY(0);
+}
+
+.gmail-shield-button.secondary {
+  background-color: transparent;
+  border: 2px solid #4285f4;
+  width: 100%;
+  margin: 0;
+}
+
+.light-mode .gmail-shield-button.secondary {
+  color: #1a73e8;
+  border-color: #1a73e8;
+  background: transparent;
+}
+
+.light-mode .gmail-shield-button.secondary:hover {
+  background: rgba(26, 115, 232, 0.08);
+}
+
+.dark-mode .gmail-shield-button.secondary {
+  color: #ffffff;
+  border-color: #5f6368;
+}
+
+.gmail-shield-actions {
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+  flex-basis: 108px;
+  justify-content: end;
+}
+
+.gmail-shield-input.error {
+  border-color: #d93025;
+}
+
+.gmail-shield-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #d93025;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  z-index: 1000000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  animation: toast-in 0.3s ease forwards;
+}
+
+.dark-mode .gmail-shield-toast {
+  background: #f28b82;
+  color: #202124;
+}
+
+@keyframes toast-in {
+  from {
+    transform: translate(-50%, 100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
